@@ -7,7 +7,7 @@
     {% for message in messages %}
     <h3>{{message}}</h3>
     {% endfor %}
-    <form action="register/" method="POST">
+    <form action= "{% url 'register' %}"  method="POST">
       {% csrf_token %}
       <label for="fname">First Name:</label>
       <input type="text" id="fname" name="fname"><br><br>

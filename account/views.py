@@ -16,12 +16,9 @@ def register(request):
         password = request.POST["password"]
         confirm_password = request.POST["confirmpassword"]
 
-        # create user if the passwords match
+        # create user if the passwords match and redirect home
         if password == confirm_password:
             user, created = User.objects.get_or_create(email=email, username = username, defaults={'first_name': first_name, 'last_name': last_name, 'password': password})
-
-        # login the user and return to home page if logging in was succesful
-        if created:
             login(request, user)
             return redirect('home')
         
