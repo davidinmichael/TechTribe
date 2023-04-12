@@ -1,0 +1,158 @@
+/* Style the form container */
+/* Apply some basic styling to the page */
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 30px;
+  text-align: center;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.footer-links a {
+  color: #fff;
+  margin-right: 20px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-social {
+  display: flex;
+}
+
+.social-icon {
+  background-color: #fff;
+  border-radius: 50%;
+  color: #333;
+  display: inline-block;
+  height: 30px;
+  line-height: 30px;
+  margin-right: 10px;
+  text-align: center;
+  width: 30px;
+}
+
+.social-icon:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.footer-info {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.footer-info a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-info a:hover {
+  text-decoration: underline;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Style the header section */
+header {
+  background-color: #db4343;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Style the navigation links */
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav li:last-child {
+  margin-right: 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Style the main section */
+main {
+  margin: 20px;
+}
+
+main h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+main p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: #f2f2f2;
+  }
+  
+  /* Style the form input fields */
+  input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Style the form submit button */
+  input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  
+  /* Change the background color of the submit button on hover */
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+  h3 {
+    color: red;
+    font-size: 24px;
+    font-weight: bold;
+  }
+

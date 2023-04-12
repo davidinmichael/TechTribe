@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<title>TechTribe</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li><a href="home">Home</a></li>
+				<li><a href="register">Register</a></li>
+				<li><a href="login">Login</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		{% block content %}
+          
+        {% endblock content %}
+	</main>
+    <footer>
+        <div class="footer-container">
+          <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+          </div>
+          <div class="footer-social">
+            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          </div>
+          <div class="footer-info">
+            <p>&copy; 2023 TechTribe.com. All Rights Reserved.</p>
+            <p>Designed by <a href="#">David Michael</a></p>
+          </div>
+        </div>
+    </footer>
+</body>
+</html>
