@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login # django packages for logging a user in
 from .models import *
 from django.contrib import messages
 
@@ -15,20 +16,15 @@ def register(request):
         password = request.POST["password"]
         confirm_password = request.POST["confirmpassword"]
 
+        # create user if the passwords match and redirect home
         if password == confirm_password:
-            user = User.objects.create_user(
-                first_name = first_name,
-                last_name = last_name,
-                email = email,
-                username = username,
-                password = password
-            )
-            user.save()
-            messages.success(request, "Welcome {username}, your account was successfully created.\nPlease Login")
-            return redirect("login")
-        else:
-            return redirect("register")
-
+            user, created = User.objects.get_or_create(email=email, username = username, defaults={'first_name': first_name, 'last_name': last_name, 'password': password})
+            login(request, user)
+            return redirect('home')
+        
+        # throw and error message if a user tries to create an account with an existing mail in database
+        messages.error(request, 'User with email already exists')
+        return redirect('register')
     else:
         context = {}
         return render(request, "account/register.html", context)
