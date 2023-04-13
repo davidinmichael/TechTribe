@@ -36,10 +36,10 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            # messages.success(request, "{{username}}, Login is succesfull")
+            messages.success(request, "Login succesfull")
             return redirect("home")
         else:
-            messages.error(request, "User does not exist, please Register.")
+            messages.error(request, "Invalid Credentials, Please, try again.")
             return redirect("register")
     
     else:
