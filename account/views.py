@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout # django packages for logging a user in
 from .models import *
 from django.contrib import messages
@@ -18,12 +19,19 @@ def register(request):
 
         # create user if the passwords match and redirect home
         if password == confirm_password:
-            user = User.objects.create_user(email=email, username = username, defaults={'first_name': first_name, 'last_name': last_name, 'password': password})
-            login(request, user)
+            # check if the user already exists in the database
+            if User.objects.filter(email=email).exists():
+                messages.error(request, 'User with email already exists')
+                return redirect('register')
+
+            user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
+            user.save()
+            # login(request, user)
             return redirect('login')
+        
+        # throw an error message if the passwords do not match
         else:
-            # throw an error message if a user tries to create an account with an existing mail in database
-            messages.error(request, 'User with email already exists')
+            messages.error(request, 'Passwords do not match')
             return redirect('register')
     else:
         context = {}
