@@ -18,13 +18,13 @@ def register(request):
 
         # create user if the passwords match and redirect home
         if password == confirm_password:
-            user, created = User.objects.get_or_create(email=email, username = username, defaults={'first_name': first_name, 'last_name': last_name, 'password': password})
+            user = User.objects.create_user(email=email, username = username, defaults={'first_name': first_name, 'last_name': last_name, 'password': password})
             login(request, user)
             return redirect('login')
-        
-        # throw and error message if a user tries to create an account with an existing mail in database
-        messages.error(request, 'User with email already exists')
-        return redirect('register')
+        else:
+            # throw an error message if a user tries to create an account with an existing mail in database
+            messages.error(request, 'User with email already exists')
+            return redirect('register')
     else:
         context = {}
         return render(request, "account/register.html", context)
@@ -45,3 +45,8 @@ def login_user(request):
     else:
         context = {}
         return render(request, "account/login.html", context)
+    
+def logout_user(request):
+    logout(request)
+    messages.success(request, "You have been Logged Out")
+    return redirect("home")
