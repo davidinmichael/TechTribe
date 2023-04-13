@@ -29,6 +29,6 @@ def register(request):
         context = {}
         return render(request, "account/register.html", context)
 
-def login(request):
+def login_user(request):
     context = {}
     return render(request, "account/login.html", context)

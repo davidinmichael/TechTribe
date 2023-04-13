@@ -7,7 +7,7 @@
     {% for message in messages %}
     <h3>{{message}}</h3>
     {% endfor %}
-    <form action="/accounts/login/" method="POST">
+    <form action="{% url 'login' %}" method="POST">
       {% csrf_token %}
  
       <label for="username">Username:</label>
@@ -17,5 +17,5 @@
       <input type="password" id="password" name="password"><br><br>      
       <input type="submit" value="Register">
     </form>
-    <p>Don't have an account yet? <a href="register.html">Register</a></p>   
+    <p>Don't have an account yet? <a href="/register">Register</a></p>   
 {% endblock content %}
