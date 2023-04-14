@@ -1,1 +1,14 @@
 {% extends "base.html" %}
+
+{% block content %}
+<div class="post">
+  <h2 id="head">Blog Posts</h2>
+  {% for article in articles %}
+    <h3 id="post-title">{{ article.title }}</h3>
+    <img id="image" src="{{ article.image.url }}" alt="post-image">
+    <p id="content">{{ article.content }}</p>
+    <p id="author">{{ article.author }}</p>
+    <p id="created">{{ article.created_at }}</p>
+</div>
+   {% endfor %}
+{% endblock content %}

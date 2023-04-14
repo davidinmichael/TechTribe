@@ -178,3 +178,46 @@ form {
   background-color: #FFE68F !important;
   color: #8B7500 !important;
 }
+
+.post {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.post > * {
+  width: 30%;
+  margin-bottom: 20px;
+}
+
+#head {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+#post-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+#content {
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+#author {
+  font-size: 14px;
+  font-style: italic;
+}
+
+#created {
+  font-size: 14px;
+}
