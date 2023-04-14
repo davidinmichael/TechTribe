@@ -48,7 +48,7 @@ def login_user(request):
             return redirect("home")
         else:
             messages.error(request, "Invalid Credentials, Please, try again.")
-            return redirect("register")
+            return redirect("login")
     
     else:
         context = {}
