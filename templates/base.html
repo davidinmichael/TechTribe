@@ -10,16 +10,16 @@
 		<nav>
       {% if user.is_authenticated %}
         <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/register">Profile</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/logout">Logout</a></li>
+          <li><a href="/account">Home</a></li>
+          <li><a href="{% url 'register' %}">Profile</a></li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
       {% else %}
 			<ul>
-				<li><a href="/">Home</a></li>
-				<li><a href="/register">Register</a></li>
-				<li><a href="/login">Login</a></li>
+				<li><a href="/account">Home</a></li>
+				<li><a href="{% url 'register' %}">Register</a></li>
+				<li><a href="{% url 'login' %}">Login</a></li>
 			</ul>
       {% endif %}
 		</nav>
@@ -37,7 +37,7 @@
     <footer>
         <div class="footer-container">
           <div class="footer-links">
-            <a href="/">Home</a>
+            <a href="/account">Home</a>
             <a href="#">About Us</a>
             <a href="#">Contact Us</a>
           </div>
