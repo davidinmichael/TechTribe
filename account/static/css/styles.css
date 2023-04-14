@@ -150,9 +150,31 @@ form {
   input[type=submit]:hover {
     background-color: #45a049;
   }
-  h3 {
-    color: red;
-    font-size: 24px;
-    font-weight: bold;
-  }
 
+.message {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+}
+
+.message.success {
+  background-color: #7FFF7F !important;
+  color: #006400 !important;
+}
+
+.message.error {
+  background-color: #FF6961 !important;
+  color: #8B0000 !important;
+}
+
+.message.info {
+  background-color: #87CEFA !important;
+  color: #191970 !important;
+}
+
+.message.warning {
+  background-color: #FFE68F !important;
+  color: #8B7500 !important;
+}
