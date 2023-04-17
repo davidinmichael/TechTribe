@@ -8,7 +8,7 @@
     <img id="image" src="{{ article.image.url }}" alt="post-image">
     <p id="content">{{ article.content }}</p>
     <p id="author">{{ article.author }}</p>
-    <p id="created">{{ article.created_at }}</p>
+    <p id="created">{{ article.created_at|date:"F d, Y" }}</p>
 </div>
    {% endfor %}
 {% endblock content %}
