@@ -5,7 +5,9 @@ from .models import *
 from django.contrib import messages
 
 def home(request):
-    context = {}
+    context = {
+        "title" : "Home"
+    }
     return render(request, "account/index.html", context)
 
 def register(request):
@@ -34,7 +36,9 @@ def register(request):
             messages.error(request, 'Passwords do not match')
             return redirect('register')
     else:
-        context = {}
+        context = {
+            "title" : "Register"
+        }
         return render(request, "account/register.html", context)
 
 def login_user(request):
@@ -51,7 +55,9 @@ def login_user(request):
             return redirect("login")
     
     else:
-        context = {}
+        context = {
+            "title" : "Login"
+        }
         return render(request, "account/login.html", context)
     
 def logout_user(request):

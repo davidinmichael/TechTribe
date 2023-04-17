@@ -3,7 +3,11 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
-	<title>TechTribe</title>
+    {% if title %}
+	    <title>TechTribe - {{ title }}</title>
+    {% else %}
+      <title>TechTribe</title>
+    {% endif %}
 </head>
 <body>
 	<header>
