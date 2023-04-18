@@ -7,6 +7,7 @@ from account import views as register_view
 urlpatterns = [
     path('admin/', admin.site.urls),
     path("", register_view.home, name="home"),
+    path("profile/", register_view.profile, name="profile"),
     path("account/", include("account.urls")),
     path("blog/", include("blog.urls")),
 ]

@@ -4,10 +4,13 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-# class User(models.Model):
-#     first_name = models.CharField(max_length=100)
-#     last_name = models.CharField(max_length=100)
-#     email = models.EmailField(max_length=100)
-#     username = models.CharField(max_length=100)
-#     password = models.CharField(max_length=30)
-#     confirm_password = models.CharField(max_length=30)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    full_name = models.CharField(max_length=100)
+    profile_picture = models.ImageField(upload_to="profile_picture/", blank=True)
+    bio = models.TextField(blank=True)
+    website = models.URLField(blank=True)
+    location = models.CharField(max_length=30, blank=True)
+
+    def __str__(self):
+        return self.user.username

@@ -221,3 +221,68 @@ form {
 #created {
   font-size: 14px;
 }
+
+header {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 0;
+}
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile-picture {
+  width: 200px;
+  height: 200px;
+  margin-right: 20px;
+}
+
+.profile-picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.profile-details {
+  flex-basis: 400px;
+}
+
+.full-name {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.username {
+  margin: 0;
+  font-size: 18px;
+}
+
+.bio {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.website {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.website a {
+  color: #333;
+}
+
+.location {
+  font-size: 16px;
+  margin-top: 10px;
+}

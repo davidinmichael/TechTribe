@@ -3,6 +3,7 @@ from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout # django packages for logging a user in
 from .models import *
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     context = {
@@ -28,7 +29,11 @@ def register(request):
 
             user = User.objects.create_user(username=username, email=email, password=password, first_name=first_name, last_name=last_name)
             user.save()
-            # login(request, user)
+
+            # Create a profile instance and associate it with the User instance
+            profile = Profile.objects.create(user=user, full_name=f"{first_name} {last_name}")
+            profile.save()
+            messages.success(request, f"{username}, your account has been created successfully")
             return redirect('login')
         
         # throw an error message if the passwords do not match
@@ -48,8 +53,8 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            messages.success(request, "Login succesfull")
-            return redirect("home")
+            messages.success(request, f"{username}, Login succesfull")
+            return redirect("profile")
         else:
             messages.error(request, "Invalid Credentials, Please, try again.")
             return redirect("login")
@@ -64,3 +69,11 @@ def logout_user(request):
     logout(request)
     messages.success(request, "You have been Logged Out")
     return redirect("login")
+
+@login_required
+def profile(request):
+    profile = Profile.objects.get(user=request.user)
+    context = {
+        "profile" : profile
+    }
+    return render(request, "account/profile.html", context)

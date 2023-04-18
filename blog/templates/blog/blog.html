@@ -9,6 +9,10 @@
     <p id="content">{{ article.content }}</p>
     <p id="author">{{ article.author }}</p>
     <p id="created">{{ article.created_at|date:"F d, Y" }}</p>
+    {% endfor %}
 </div>
-   {% endfor %}
+  <h1>Please Login to Continue</h1>
+  <p>Don't have an account yet? <a href="{% url 'register' %}">Register</a></p>   
+  <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+   
 {% endblock content %}

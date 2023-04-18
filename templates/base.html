@@ -15,13 +15,14 @@
       {% if user.is_authenticated %}
         <ul>
           <li><a href="{% url 'home' %}">Home</a></li>
-          <li><a href="{% url 'register' %}">Profile</a></li>
+          <li><a href="{% url 'profile' %}">Profile</a></li>
           <li><a href="{% url 'blog' %}">Blog</a></li>
           <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
       {% else %}
 			<ul>
 				<li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'blog' %}">Blog</a></li>
 				<li><a href="{% url 'register' %}">Register</a></li>
 				<li><a href="{% url 'login' %}">Login</a></li>
 			</ul>
@@ -30,17 +31,17 @@
 	</header>
 	<main>
     {% if messages %}
-    {% for message in messages %}
-      {% if message.tags == 'success' %}
-        <p class="message success">{{ message }}</p>
-      {% elif message.tags == 'error' %}
-        <p class="message error">{{ message }}</p>
-      {% elif message.tags == 'info' %}
-        <p class="message info">{{ message }}</p>
-      {% elif message.tags == 'warning' %}
-        <p class="message warning">{{ message }}</p>
-      {% endif %}
-    {% endfor %}
+      {% for message in messages %}
+        {% if message.tags == 'success' %}
+          <p class="message success">{{ message }}</p>
+        {% elif message.tags == 'error' %}
+          <p class="message error">{{ message }}</p>
+        {% elif message.tags == 'info' %}
+          <p class="message info">{{ message }}</p>
+        {% elif message.tags == 'warning' %}
+          <p class="message warning">{{ message }}</p>
+        {% endif %}
+      {% endfor %}
     {% endif %}  
 		{% block content %}
           
