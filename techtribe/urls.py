@@ -2,9 +2,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from account import views as register_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("", register_view.home, name="home"),
     path("account/", include("account.urls")),
     path("blog/", include("blog.urls")),
 ]
