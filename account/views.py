@@ -4,6 +4,9 @@ from django.contrib.auth import authenticate, login, logout # django packages fo
 from .models import *
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.files.storage import FileSystemStorage
+from .forms import *
+
 
 def home(request):
     context = {
@@ -77,3 +80,26 @@ def profile(request):
         "profile" : profile
     }
     return render(request, "account/profile.html", context)
+
+@login_required
+def edit_profile(request):
+    user = request.user
+    profile = user.profile
+    
+    if request.method == 'POST':
+        user_form = UserForm(request.POST, instance=user)
+        profile_form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, 'Your profile has been updated.')
+            return redirect('profile')
+    else:
+        user_form = UserForm(instance=user)
+        profile_form = ProfileForm(instance=profile)
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form,
+    }
+    return render(request, 'account/editprofile.html', context)

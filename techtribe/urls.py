@@ -8,6 +8,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("", register_view.home, name="home"),
     path("profile/", register_view.profile, name="profile"),
+    path("editprofile/", register_view.edit_profile, name="edit_profile"),
     path("account/", include("account.urls")),
     path("blog/", include("blog.urls")),
 ]
