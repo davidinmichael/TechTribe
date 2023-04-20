@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import authenticate, login, logout # django packages for logging a user in
 from .models import *
@@ -6,6 +6,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from .forms import *
+from django.urls import reverse
 
 
 def home(request):
@@ -57,7 +58,7 @@ def login_user(request):
         if user is not None:
             login(request, user)
             messages.success(request, f"{username}, Login succesfull")
-            return redirect("profile")
+            return redirect(reverse("profile", args=[user.username]))
         else:
             messages.error(request, "Invalid Credentials, Please, try again.")
             return redirect("login")
@@ -74,8 +75,8 @@ def logout_user(request):
     return redirect("login")
 
 @login_required
-def profile(request):
-    profile = Profile.objects.get(user=request.user)
+def profile(request, username):
+    profile = get_object_or_404(Profile, user__username=username)
     context = {
         "profile" : profile
     }
@@ -93,7 +94,7 @@ def edit_profile(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Your profile has been updated.')
-            return redirect('profile')
+            return redirect(reverse("profile", args=[user.username]))
     else:
         user_form = UserForm(instance=user)
         profile_form = ProfileForm(instance=profile)
